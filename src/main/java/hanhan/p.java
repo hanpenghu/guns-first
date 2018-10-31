@@ -4947,6 +4947,12 @@ public static Object StringTypeSpace2Null(Object o) throws IllegalAccessExceptio
      * 得到springboot  jar所在路径,最后带杠的
      *
      * //注意这种路径只是得到springboot  的jar所在的路径
+     *
+     *
+     * E:\\stylefeng-guns-master\\guns\\target\\
+     * 这种
+     *
+     * 以后养成习惯,默认的路径后面都带上/
      * */
     public static String  springBootJarPath(){
         //创建一个文件//注意这个文件直接会生成在springboot  jar所在的文件夹中
@@ -4957,7 +4963,7 @@ public static Object StringTypeSpace2Null(Object o) throws IllegalAccessExceptio
             e.printStackTrace();
         }
         String absolutePath = file.getAbsolutePath();
-
+        //去掉那个1
         String jarPath=absolutePath.substring(0,absolutePath.length()-1);
         if(file .exists()) {
             file.delete();

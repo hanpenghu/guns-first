@@ -59,7 +59,8 @@ public class ApiController extends BaseController {
         String username=loginModel.getUsername();
         String password=loginModel.getPassword();
         //封装请求账号密码为shiro可验证的token
-        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, password.toCharArray());
+        UsernamePasswordToken usernamePasswordToken =
+                new UsernamePasswordToken(username, password.toCharArray());
 
         //获取数据库中的账号密码，准备比对
         User user = userMapper.getByAccount(username);
@@ -83,6 +84,7 @@ public class ApiController extends BaseController {
 
         //校验用户账号密码
         HashedCredentialsMatcher md5CredentialsMatcher = new HashedCredentialsMatcher();
+
         md5CredentialsMatcher.setHashAlgorithmName(ShiroKit.hashAlgorithmName);
         md5CredentialsMatcher.setHashIterations(ShiroKit.hashIterations);
 
@@ -107,6 +109,19 @@ public class ApiController extends BaseController {
     public Object test() {
 
         return SUCCESS_TIP;
+
+    }
+
+
+    /**
+     *测试regist接口不被拦截
+     * 在下面包中配置拦截器
+     * cn.stylefeng.guns.core.interceptor.RestApiInteceptor
+     * */
+    @RequestMapping(value = "/regist", method = RequestMethod.GET)
+    public @ResponseBody  Object registTest() {
+
+        return Msg.g().setStatus(1).setMsg("registPathNotIntercept");
 
     }
 

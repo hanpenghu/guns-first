@@ -27,9 +27,10 @@ public interface JwtConstants {
 
     String SECRET = "defaultSecret";
 
-    Long EXPIRATION = 604800L;//七天
-
+    //    Long EXPIRATION = 604800L;//七天//秒数
+    //Long EXPIRATION = 30L;//30秒//秒数
+    Long EXPIRATION = 3600*8L;//8小时//秒数
     String AUTH_PATH = "/gunsApi/auth";
-    String REGIST_PATH="/gunsApi/regist";
+    String REGIST_PATH = "/gunsApi/regist";
 
 }

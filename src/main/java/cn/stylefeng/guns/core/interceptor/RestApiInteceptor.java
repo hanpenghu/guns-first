@@ -47,7 +47,6 @@ private org.slf4j.Logger log= org.slf4j.LoggerFactory.getLogger(this.getClass())
     }
 
     private boolean check(HttpServletRequest request, HttpServletResponse response, HandlerMethod handlerMethod) {
-
         String servletPath = request.getServletPath();
         LogUtils.logInfo(log,"servletPath",servletPath);
         //放行登录页面和注册页面
@@ -63,7 +62,7 @@ private org.slf4j.Logger log= org.slf4j.LoggerFactory.getLogger(this.getClass())
             try {
                 boolean flag = JwtTokenUtil.isTokenExpired(authToken);
                 if (flag) {
-                    RenderUtil.renderJson(response, new ErrorResponseData(BizExceptionEnum.TOKEN_EXPIRED.getCode(), BizExceptionEnum.TOKEN_EXPIRED.getMessage()));
+                    RenderUtil.renderJson(  response, new ErrorResponseData(BizExceptionEnum.TOKEN_EXPIRED.getCode(), BizExceptionEnum.TOKEN_EXPIRED.getMessage())  );
                     return false;
                 }
             } catch (JwtException e) {

@@ -118,8 +118,12 @@ public class JwtTokenUtil {
 
     /**
      * 生成token
+     * claims:填写普通信息,比如用户名,也可以不填写
+     *
      */
     private static String doGenerateToken(Map<String, Object> claims, String subject) {
+
+
         final Date createdDate = new Date();
         final Date expirationDate = new Date(createdDate.getTime() + JwtConstants.EXPIRATION * 1000);
 
@@ -128,8 +132,10 @@ public class JwtTokenUtil {
                 .setSubject(subject)
                 .setIssuedAt(createdDate)
                 .setExpiration(expirationDate)
-                .signWith(SignatureAlgorithm.HS512, JwtConstants.SECRET)
+                .signWith(SignatureAlgorithm.HS512,JwtConstants.SECRET)
+                //compact 协议,条约,压紧
                 .compact();
+
     }
 
     /**

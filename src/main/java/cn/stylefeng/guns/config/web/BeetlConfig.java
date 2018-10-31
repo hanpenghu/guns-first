@@ -48,6 +48,7 @@ public class BeetlConfig {
 
     /**
      * beetl的视图解析器
+     *
      */
     @Bean
     public BeetlSpringViewResolver beetlViewResolver() {

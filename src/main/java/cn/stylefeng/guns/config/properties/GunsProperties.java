@@ -15,13 +15,12 @@
  */
 package cn.stylefeng.guns.config.properties;
 
-import cn.stylefeng.roses.core.util.ToolUtil;
+import cn.stylefeng.guns.Utils.LogUtils;
+import hanhan.p;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
-
-import static cn.stylefeng.roses.core.util.ToolUtil.getTempPath;
 
 /**
  * guns项目配置
@@ -32,7 +31,7 @@ import static cn.stylefeng.roses.core.util.ToolUtil.getTempPath;
 @Component
 @ConfigurationProperties(prefix = GunsProperties.PREFIX)
 public class GunsProperties {
-
+    private org.slf4j.Logger log= org.slf4j.LoggerFactory.getLogger(this.getClass());
     public static final String PREFIX = "guns";
 
     private Boolean kaptchaOpen = false;
@@ -56,7 +55,7 @@ public class GunsProperties {
     private Integer sessionValidationInterval = 15 * 60;
 
     public String getFileUploadPath() {
-        //如果没有写文件上传路径,保存到临时目录
+        /*//如果没有写文件上传路径,保存到临时目录
         if (ToolUtil.isEmpty(fileUploadPath)) {
             return getTempPath();
         } else {
@@ -71,7 +70,16 @@ public class GunsProperties {
                 haveCreatePath = true;
             }
             return fileUploadPath;
+        }*/
+        String s1 = p.springBootJarPath();
+        LogUtils.logInfo(log,"p.springbootJarPath", s1);
+        String s=s1+"tmp"+File.separator;
+        log.info("===file1.getAbsolutePath()：{}===",s);
+        if(!new File(s).exists()){
+            new File(s).mkdir();
         }
+
+        return s;
     }
 
     public void setFileUploadPath(String fileUploadPath) {
