@@ -13,28 +13,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cn.stylefeng.guns.modular.system.service;
+package cn.stylefeng.guns.modular.system.warpper;
 
-import cn.stylefeng.guns.modular.system.model.OperationLog;
+import cn.stylefeng.roses.core.base.warpper.BaseControllerWrapper;
+import cn.stylefeng.roses.kernel.model.page.PageResult;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * <p>
- * 操作日志 服务类
- * </p>
+ * 日志列表的包装类
  *
- * @author stylefeng123
- * @since 2018-02-22
+ * @author fengshuonan
+ * @date 2017年4月5日22:56:24
  */
-public interface IOperationLogService extends IService<OperationLog> {
+public class OrderWarpper extends BaseControllerWrapper {
 
-    /**
-     * 获取操作日志列表
-     */
-    List<Map<String, Object>> getOperationLogs
-    (Page<OperationLog> page, String beginTime, String endTime, String logName, String s, String orderByField, boolean asc);
+    public OrderWarpper(Map<String, Object> single) {
+        super(single);
+    }
+
+    public OrderWarpper(List<Map<String, Object>> multi) {
+        super(multi);
+    }
+
+    public OrderWarpper(Page<Map<String, Object>> page) {
+
+        super(page);
+
+    }
+
+    public OrderWarpper(PageResult<Map<String, Object>> pageResult) {
+        super(pageResult);
+    }
+
+    @Override
+    protected void wrapTheMap(Map<String, Object> map) {
+
+    }
 }

@@ -15,6 +15,7 @@
  */
 package cn.stylefeng.guns.modular.system.controller;
 
+import cn.stylefeng.guns.Utils.LogUtils;
 import cn.stylefeng.guns.modular.system.service.INoticeService;
 import cn.stylefeng.roses.core.base.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,9 @@ public class BlackboardController extends BaseController {
     @RequestMapping("")
     public String blackboard(Model model) {
         List<Map<String, Object>> notices = noticeService.list(null);
+        LogUtils.logInfo(log,"List<Map<String, Object>> notices: ",notices);
         model.addAttribute("noticeList", notices);
         return "/blackboard.html";
     }
+    private org.slf4j.Logger log= org.slf4j.LoggerFactory.getLogger(this.getClass());
 }

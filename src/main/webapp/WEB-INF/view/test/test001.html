@@ -6,5 +6,20 @@
 </head>
 <body>
 你好！  ${order.userName},  我是测试 001
+<form action="/test/test002" method="post">
+    <input type="text" name="userName"/>
+    <button type="submit">提交</button>
+</form>
+<hr/>
+<!-- 测试权限成功-->
+1.
+@if(shiro.hasPermission("/order/add1")){
+    ${s}
+@}
+<hr/>
+2.
+@if(shiro.hasPermission("/order/add")){
+    ${s}
+@}
 </body>
 </html>

@@ -24,6 +24,7 @@ import cn.stylefeng.guns.core.shiro.ShiroKit;
 import cn.stylefeng.guns.core.shiro.ShiroUser;
 import cn.stylefeng.guns.core.util.Contrast;
 import cn.stylefeng.roses.core.util.HttpContext;
+import hanhan.p;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
@@ -55,6 +56,7 @@ public class LogAop {
 
     @Around("cutService()")
     public Object recordSysLog(ProceedingJoinPoint point) throws Throwable {
+        p.p("========recordSysLog1======");
 
         //先执行业务
         Object result = point.proceed();
@@ -69,7 +71,7 @@ public class LogAop {
     }
 
     private void handle(ProceedingJoinPoint point) throws Exception {
-
+        p.p("========recordSysLog======");
         //获取拦截的方法名
         Signature sig = point.getSignature();
         MethodSignature msig = null;

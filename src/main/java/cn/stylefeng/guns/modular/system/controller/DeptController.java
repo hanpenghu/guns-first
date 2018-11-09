@@ -150,6 +150,7 @@ public class DeptController extends BaseController {
     /**
      * 删除部门
      */
+
     @BussinessLog(value = "删除部门", key = "deptId", dict = DeptDict.class)
     @RequestMapping(value = "/delete")
     @Permission

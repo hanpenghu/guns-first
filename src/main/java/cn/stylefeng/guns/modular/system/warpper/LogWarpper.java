@@ -42,7 +42,9 @@ public class LogWarpper extends BaseControllerWrapper {
     }
 
     public LogWarpper(Page<Map<String, Object>> page) {
+
         super(page);
+
     }
 
     public LogWarpper(PageResult<Map<String, Object>> pageResult) {

@@ -16,6 +16,7 @@
 package cn.stylefeng.guns.modular.system.controller;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.stylefeng.guns.Utils.LogUtils;
 import cn.stylefeng.guns.core.common.annotion.BussinessLog;
 import cn.stylefeng.guns.core.common.annotion.Permission;
 import cn.stylefeng.guns.core.common.constant.Const;
@@ -47,6 +48,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/log")
 public class LogController extends BaseController {
+    private org.slf4j.Logger log= org.slf4j.LoggerFactory.getLogger(this.getClass());
 
     private static String PREFIX = "/system/log/";
 
@@ -58,7 +60,9 @@ public class LogController extends BaseController {
      */
     @RequestMapping("")
     public String index() {
+
         return PREFIX + "log.html";
+
     }
 
     /**
@@ -67,10 +71,23 @@ public class LogController extends BaseController {
     @RequestMapping("/list")
     @Permission(Const.ADMIN_NAME)
     @ResponseBody
-    public Object list(@RequestParam(required = false) String beginTime, @RequestParam(required = false) String endTime, @RequestParam(required = false) String logName, @RequestParam(required = false) Integer logType) {
+    public Object list(@RequestParam(required = false) String beginTime,
+                       @RequestParam(required = false) String endTime,
+                       @RequestParam(required = false) String logName,
+                       @RequestParam(required = false) Integer logType) {
+
         Page<OperationLog> page = new PageFactory<OperationLog>().defaultPage();
-        List<Map<String, Object>> result = operationLogService.getOperationLogs(page, beginTime, endTime, logName, BizLogType.valueOf(logType), page.getOrderByField(), page.isAsc());
+
+        LogUtils.logInfo(log,"page.getOrderByField()",page.getOrderByField());
+        LogUtils.logInfo(log,"page.isAsc()",page.isAsc());
+
+        List<Map<String, Object>> result = operationLogService.getOperationLogs
+                (page, beginTime, endTime, logName, BizLogType.valueOf(logType),
+                        page.getOrderByField(), page.isAsc());
+
         page.setRecords(new LogWarpper(result).wrap());
+
+
         return new PageInfoBT<>(page);
     }
 
