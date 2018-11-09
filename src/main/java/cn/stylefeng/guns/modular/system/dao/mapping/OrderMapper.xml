@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.OrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.system.model.Order">
+        <id column="id" property="id" />
+        <result column="goods_name" property="goodsName" />
+        <result column="place" property="place" />
+        <result column="create_time" property="createTime" />
+        <result column="user_name" property="userName" />
+        <result column="user_phone" property="userPhone" />
+        <result column="email" property="email" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, goods_name, place, create_time, user_name, user_phone,email
+    </sql>
+
+
+    <sql id="Base_Column_List_as">
+        id, goods_name as goodsName, place,
+         create_time as createTime, user_name as userName,
+          user_phone as userPhone,email
+    </sql>
+
+    <select id="getPag" resultType="map">
+        select
+        <include refid="Base_Column_List_as"/>
+        from biz_order where 1 = 1
+        <choose>
+            <when test="orderByField != null and orderByField !=''">
+                <choose>
+                    <when test="isAsc == true">
+                        order by ${orderByField} ASC
+                    </when>
+                    <otherwise>
+                        order by ${orderByField} DESC
+                    </otherwise>
+                </choose>
+            </when>
+            <otherwise>
+                order by id DESC
+            </otherwise>
+        </choose>
+    </select>
+
+
+
+</mapper>
