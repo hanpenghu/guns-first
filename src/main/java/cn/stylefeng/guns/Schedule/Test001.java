@@ -19,7 +19,7 @@ public class Test001 {
 
     @Scheduled(initialDelay = 15000,fixedDelay =Long.MAX_VALUE)
     public void f(){
-        LogUtils.logInfo(log,"test001",orderMapper.test001());
+//        LogUtils.logInfo(log,"test001",orderMapper.test001());
     }
 
 }

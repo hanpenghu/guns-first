@@ -114,6 +114,7 @@ public class WebConfig implements WebMvcConfigurer {
      */
     @Bean
     public DruidStatInterceptor druidStatInterceptor() {
+
         return new DruidStatInterceptor();
     }
 
