@@ -23,6 +23,7 @@ package cn.stylefeng.guns.core.common.constant;
  */
 public interface JwtConstants {
 
+
     String AUTH_HEADER = "Authorization";
 
     String SECRET = "defaultSecret";

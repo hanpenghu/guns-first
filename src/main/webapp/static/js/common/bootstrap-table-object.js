@@ -19,6 +19,10 @@
         this.queryParams = {}; // 向后台传递的自定义参数
     };
 
+
+
+
+
     BSTable.prototype = {
         /**
          * 初始化bootstrap table
@@ -31,6 +35,7 @@
                     contentType: "application/x-www-form-urlencoded",
                     url: this.url,				//请求地址
                     method: this.method,		//ajax方式,post还是get
+                    resizable: true,
                     ajaxOptions: {				//ajax请求的附带参数
                         data: this.data
                     },
@@ -41,7 +46,7 @@
                     sortable: true,      		//是否启用排序
                     sortOrder: "desc",     		//排序方式
                     pageNumber: 1,      			//初始化加载第一页，默认第一页
-                    pageSize: 14,      			//每页的记录行数（*）
+                    pageSize: 10,      			//每页的记录行数（*）
                     pageList: [14, 50, 100],  	//可供选择的每页的行数（*）
                     queryParamsType: 'limit', 	//默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
                     queryParams: function (param) {
@@ -57,7 +62,7 @@
                     searchOnEnterKey: true,		//设置为 true时，按回车触发搜索方法，否则自动触发搜索方法
                     columns: this.columns,		//列数组
                     pagination: true,			//是否显示分页条
-                    height: this.height,
+                    height: 415,
                     icons: {
                         refresh: 'glyphicon-repeat',
                         toggle: 'glyphicon-list-alt',
@@ -65,6 +70,7 @@
                     },
                     iconSize: 'outline'
                 });
+
             return this;
         },
         /**

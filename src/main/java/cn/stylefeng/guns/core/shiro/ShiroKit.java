@@ -18,6 +18,7 @@ package cn.stylefeng.guns.core.shiro;
 import cn.stylefeng.guns.core.common.constant.Const;
 import cn.stylefeng.guns.core.common.constant.factory.ConstantFactory;
 import cn.stylefeng.roses.core.util.ToolUtil;
+import hanhan.p;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.crypto.hash.SimpleHash;
@@ -89,6 +90,22 @@ public class ShiroKit {
             return (ShiroUser) getSubject().getPrincipals().getPrimaryPrincipal();
         }
     }
+
+    public static String getUserSign() {
+        if (isGuest()) {
+            return null;
+        } else {
+            ShiroUser shiroUser = (ShiroUser) getSubject().getPrincipals().getPrimaryPrincipal();
+            if(p.notEmpty(shiroUser.getName())){
+                return shiroUser.getName();
+            }
+            if(p.notEmpty(shiroUser.getAccount())){
+                return shiroUser.getAccount();
+            }
+        }
+        return null;
+    }
+
 
     /**
      * 从shiro获取session

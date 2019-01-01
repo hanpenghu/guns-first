@@ -83,7 +83,9 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
     @Override
     public List<ZTreeNode> menuTreeList() {
+
         return this.baseMapper.menuTreeList();
+
     }
 
     @Override

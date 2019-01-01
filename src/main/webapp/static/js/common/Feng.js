@@ -192,5 +192,8 @@ var Feng = {
             parent.$('.J_mainContent').find('iframe.J_iframe').hide().parents('.J_mainContent').append(iframeContent);
             parent.MyCrontab.scrollToTab($('.J_menuTab.active'));
         }
+
+
+
     }
 };

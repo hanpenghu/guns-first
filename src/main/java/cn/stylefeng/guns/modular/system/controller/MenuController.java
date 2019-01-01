@@ -201,7 +201,10 @@ public class MenuController extends BaseController {
     @RequestMapping(value = "/menuTreeList")
     @ResponseBody
     public List<ZTreeNode> menuTreeList() {
+
         return this.menuService.menuTreeList();
+
+
     }
 
     /**
