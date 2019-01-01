@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.FixMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.system.model.Fix">
+        <id column="id" property="id" />
+        <result column="custom_id" property="customId" />
+        <result column="ispay" property="ispay" />
+        <result column="cost" property="cost" />
+        <result column="car01" property="car01" />
+        <result column="fix_program" property="fixProgram" />
+        <result column="fix_time" property="fixTime" />
+        <result column="use_part" property="usePart" />
+        <result column="rem01" property="rem01" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, custom_id, ispay, cost, car01, fix_program, fix_time, use_part, rem01, create_by, create_time
+    </sql>
+
+</mapper>

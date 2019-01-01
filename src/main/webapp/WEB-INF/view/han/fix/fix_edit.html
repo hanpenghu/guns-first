@@ -1,0 +1,37 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="维修id" value="${item.id}" underline="true"/>
+                            <#input id="customId" name="维修用户id" value="${item.customId}" underline="true"/>
+                            <#input id="ispay" name="是否已经付款,填写是或者不是" value="${item.ispay}" underline="true"/>
+                            <#input id="cost" name="该次维修费用" value="${item.cost}" underline="true"/>
+                            <#input id="car01" name="客户维修车型" value="${item.car01}" underline="true"/>
+                            <#input id="fixProgram" name="维修项目" value="${item.fixProgram}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="fixTime" name="维修时间" value="${item.fixTime}" underline="true"/>
+                            <#input id="usePart" name="使用零件" value="${item.usePart}" underline="true"/>
+                            <#input id="rem01" name="备注" value="${item.rem01}" underline="true"/>
+                            <#input id="createBy" name="创建人" value="${item.createBy}" underline="true"/>
+                            <#input id="createTime" name="创建时间" value="${item.createTime}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="FixInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="FixInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/han/fix/fix_info.js"></script>
+
+@}

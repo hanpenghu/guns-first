@@ -1,0 +1,36 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            @//<#input id="id" name="维修id" underline="true"/>
+                            <#input id="customId" name="维修用户id" underline="true" value="${customId}" readonly="readonly"/>
+                            <#input id="ispay" name="是否已经付款,填写是或者不是" underline="true"/>
+                            <#input id="cost" name="该次维修费用" underline="true"/>
+                            <#input id="car01" name="客户维修车型" underline="true"/>
+                            <#input id="fixProgram" name="维修项目"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="fixTime" name="维修时间" underline="true"/>
+                            <#input id="usePart" name="使用零件" underline="true"/>
+                            <#input id="rem01" name="备注" underline="true"/>
+                           @// <#input id="createBy" name="创建人" underline="true"/>
+                            @//<#input id="createTime" name="创建时间" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="FixInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="FixInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/han/fix/fix_info.js"></script>
+@}
