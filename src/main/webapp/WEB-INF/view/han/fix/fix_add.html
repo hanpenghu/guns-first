@@ -7,14 +7,18 @@
                 <div class="col-sm-6 b-r">
                             @//<#input id="id" name="维修id" underline="true"/>
                             <#input id="customId" name="维修用户id" underline="true" value="${customId}" readonly="readonly"/>
-                            <#input id="ispay" name="是否已经付款,填写是或者不是" underline="true"/>
+                             @// <#input id="ispay" name="是否已经付款,填写是或者不是" underline="true"/>
+                            <#select id="ispay" name="是否已经付款" underline="true">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </#select>
                             <#input id="cost" name="该次维修费用" underline="true"/>
                             <#input id="car01" name="客户维修车型" underline="true"/>
                             <#input id="fixProgram" name="维修项目"/>
                 </div>
 
                 <div class="col-sm-6">
-                            <#input id="fixTime" name="维修时间" underline="true"/>
+                            <#input id="fixTime" name="维修时间" underline="true" type="text"/>
                             <#input id="usePart" name="使用零件" underline="true"/>
                             <#input id="rem01" name="备注" underline="true"/>
                            @// <#input id="createBy" name="创建人" underline="true"/>
@@ -33,4 +37,10 @@
     </div>
 </div>
 <script src="${ctxPath}/static/modular/han/fix/fix_info.js"></script>
+<script>
+    laydate.render({
+        elem: '#fixTime'
+        ,type: 'datetime'
+    });
+</script>
 @}

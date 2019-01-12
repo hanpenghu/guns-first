@@ -1,12 +1,9 @@
 package cn.stylefeng.guns.modular.han_modular.controller;
-
 import cn.stylefeng.guns.core.common.constant.factory.PageFactory;
 import cn.stylefeng.guns.core.common.page.PageInfoBT;
 import cn.stylefeng.guns.core.shiro.ShiroKit;
 import cn.stylefeng.guns.modular.system.warpper.CustomWarpper;
 import cn.stylefeng.roses.core.base.controller.BaseController;
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.baomidou.mybatisplus.plugins.Page;
 import hanhan.p;
 import org.springframework.stereotype.Controller;
@@ -19,7 +16,6 @@ import cn.stylefeng.guns.core.log.LogObjectHolder;
 import org.springframework.web.bind.annotation.RequestParam;
 import cn.stylefeng.guns.modular.system.model.Custom;
 import cn.stylefeng.guns.modular.han_modular.service.ICustomService;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Map;

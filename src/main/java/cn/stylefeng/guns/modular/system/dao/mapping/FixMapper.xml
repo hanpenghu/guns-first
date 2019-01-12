@@ -22,4 +22,38 @@
         id, custom_id, ispay, cost, car01, fix_program, fix_time, use_part, rem01, create_by, create_time
     </sql>
 
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List_as">
+        hf.id, hf.custom_id as customId, hf.ispay, hf.cost, hf.car01, hf.fix_program as fixProgram,
+         hf.fix_time as fixTime, hf.use_part as usePart, hf.rem01, hf.create_by as createBy, hf.create_time as createTime
+    </sql>
+    <select id="getPag" resultType="map">
+        select
+        <include refid="Base_Column_List_as"/>
+        from han_fix hf
+        left join han_custom hc on hc.id=hf.custom_id
+        where 1 = 1
+        <if test=" condition != null and condition !='' ">
+            and (
+                    hf.ispay like #{condition} or hf.car01 like #{condition} or hf.fix_program like #{condition}
+                    or hf.use_part like #{condition} or hf.rem01 like #{condition}
+                    or concat('%',hf.custom_id,'%')=#{condition} or hc.name like #{condition}
+            )
+        </if>
+        <choose>
+            <when test="orderByField != null and orderByField !=''">
+                <choose>
+                    <when test="isAsc == true">
+                        order by ${orderByField} ASC
+                    </when>
+                    <otherwise>
+                        order by ${orderByField} DESC
+                    </otherwise>
+                </choose>
+            </when>
+            <otherwise>
+                order by hf.create_time DESC
+            </otherwise>
+        </choose>
+    </select>
 </mapper>

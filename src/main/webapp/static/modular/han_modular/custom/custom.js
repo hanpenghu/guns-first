@@ -15,7 +15,7 @@ Custom.initColumn = function () {
     return [
             {field: 'selectItem', radio: true},
             {title: '添加修车记录', field: 'addFixRec', visible: true, align: 'center', valign: 'middle',width:120,formatter:paramsMatter1},
-            {title: '查看修车记录', field: 'fixRecLook', visible: true, align: 'center', valign: 'middle',width:120,formatter:paramsMatter},
+            {title: '查看修车记录', field: 'fixRecLook', visible: true, align: 'center', valign: 'middle',width:120,formatter:paramsMatter2},
             {title: '客户id', field: 'id', visible: true, align: 'center', valign: 'middle',width:120,formatter:paramsMatter},
             {title: '客户姓名', field: 'name', visible: true, align: 'center', valign: 'middle',width:120,formatter:paramsMatter},
             {title: '创建时间', field: 'createTime', visible: true, align: 'center', valign: 'middle',width:120,formatter:paramsMatter},
@@ -56,9 +56,15 @@ function fixAdd(e) {
     Feng.newCrontab("/fix/fix_add"+$(e).attr("data-bind"),"添加修车记录")
 }
 
+function paramsMatter2(value, row, index) {
+    var a="<a href='javascript:;' onclick='fixLook(this)' data-bind='"+value+"'>点击查看维修记录</a>"
+    return a;
+}
 
-
-
+function fixLook(e) {
+    //alert($(e).attr("data-bind"))
+    Feng.newCrontab("/fix"+$(e).attr("data-bind"),"查看修车记录")
+}
 /**
  * 检查是否选中
  */

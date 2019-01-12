@@ -31,19 +31,22 @@
     </sql>
 
     <sql id="Base_Column_List_as">
-     id, name, age, phone01, phone02, phone03, phone04, car01,
+     id, `name`, age, phone01, phone02, phone03, phone04, car01,
       car02, car03, rem01, rem02, rem03, introduce,
        introduce_phone as introducePhone,
        create_by as createBy, create_time as createTime,
-      <![CDATA[  concat('?id=',id) as addFixRec ,   ]]>
-        '点击添加修车记录'  as fixRecLook
+      <![CDATA[  concat('?id=',id) as addFixRec ,   ]]> -- 传递id参数到修车记录
+        <![CDATA[  concat('?id=',id)  as fixRecLook ]]>
     </sql>
     <select id="getPag" resultType="map">
         select
         <include refid="Base_Column_List_as"/>
         from han_custom where 1 = 1
         <if test=" condition != null and condition !='' ">
-            and (name like #{condition} or phone01 like #{condition} or phone02 like #{condition} or phone02 like #{condition} or phone03 like #{condition} or phone04 like #{condition})
+            and (
+            `name` like #{condition} or phone01 like #{condition} or phone02 like #{condition}
+            or phone02 like #{condition} or phone03 like #{condition} or phone04 like #{condition}
+            )
         </if>
         <choose>
             <when test="orderByField != null and orderByField !=''">

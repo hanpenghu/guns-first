@@ -32,6 +32,9 @@ public class Fix extends Model<Fix> {
      */
     @TableField("custom_id")
     private String customId;
+
+
+
     /**
      * 是否已经付款,填写是或者不是
      */
@@ -52,7 +55,7 @@ public class Fix extends Model<Fix> {
     /**
      * 维修时间
      */
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @TableField("fix_time")
     private Date fixTime;
     /**

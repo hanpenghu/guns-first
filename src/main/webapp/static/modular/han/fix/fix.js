@@ -14,8 +14,8 @@ var Fix = {
 Fix.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
-            {title: '维修id', field: 'id', visible: true, align: 'center', valign: 'middle',formatter:paramsMatter},
-            {title: '维修用户id', field: 'customId', visible: true, align: 'center', valign: 'middle',formatter:paramsMatter},
+        {title: '维修id', field: 'id', visible: true, align: 'center', valign: 'middle',formatter:paramsMatter},
+        {title: '维修用户id', field: 'customId', visible: true, align: 'center', valign: 'middle',formatter:paramsMatter},
             {title: '是否已经付款,填写是或者不是', field: 'ispay', visible: true, align: 'center', valign: 'middle',width:120,formatter:paramsMatter},
             {title: '该次维修费用', field: 'cost', visible: true, align: 'center', valign: 'middle',width:120,formatter:paramsMatter},
             {title: '客户维修车型', field: 'car01', visible: true, align: 'center', valign: 'middle',width:120,formatter:paramsMatter},
@@ -106,9 +106,20 @@ Fix.search = function () {
     Fix.table.refresh({query: queryData});
 };
 
+//han
+function GetQueryString(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
+
+var condition='${condition}'
+
 $(function () {
+    // alert(condition)
     var defaultColunms = Fix.initColumn();
-    var table = new BSTable(Fix.id, "/fix/list", defaultColunms);
-    table.setPaginationType("client");
+    var table = new BSTable(Fix.id, "/fix/list?condition="+condition, defaultColunms);
+    table.setPaginationType("server");
     Fix.table = table.init();
 });
